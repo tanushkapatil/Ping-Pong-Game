@@ -21,10 +21,17 @@ public class BallMovement : MonoBehaviour
         yield return new WaitForSeconds(1) ;
         MoveBall(new Vector2(-1, 0)) ;
     }
+
     public void MoveBall(Vector2 direction) {
         direction = direction.normalized ;
         float ballSpeed = startSpeed + hitCounter * extraSpeed ;
         rb.velocity = direction * ballSpeed ;
+    }
+
+    public void IncreaseHitCounter() {
+        if(hitCounter * extraSpeed < maxExtraSpeed) {
+            hitCounter++ ;
+        }
     }
 
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class BallBounce : MonoBehaviour
 {
     public BallMovement ballMovement ;
+    public ScoreManager scoreManager ;
 
     private void Bounce(Collision2D collision) {
         Vector3 ballPosition  = transform.position ;
@@ -29,6 +30,16 @@ public class BallBounce : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2") {
             Bounce(collision) ;
+        }
+        else if ( collision.gameObject.name == "RightBorder"){
+            scoreManager.Player1Goal() ;
+            ballMovement.playerStart = false ;
+            StartCoroutine(ballMovement.Launch()) ;
+        }
+        else if (collision.gameObject.name == "LeftBorder") {
+            scoreManager.Player2Goal() ;
+            ballMovement.playerStart = true ;
+            StartCoroutine(ballMovement.Launch()) ;
         }
     }
 }

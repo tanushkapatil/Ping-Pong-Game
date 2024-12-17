@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BallBounce : MonoBehaviour
 {
+    public GameObject HitSFX ;
     public BallMovement ballMovement ;
     public ScoreManager scoreManager ;
 
@@ -41,5 +42,7 @@ public class BallBounce : MonoBehaviour
             ballMovement.playerStart = true ;
             StartCoroutine(ballMovement.Launch()) ;
         }
+
+        Instantiate(HitSFX, transform.position, transform.rotation) ;
     }
 }

@@ -18,7 +18,7 @@ public class Player1 : MonoBehaviour
     void Update()
     {
         float directionY  = Input.GetAxisRaw("Vertical") ;  
-        racketDirection = new Vector2(0, directionY).normalized 
+        racketDirection = new Vector2(0, directionY).normalized ; 
     }
 
     private void FixedUpdate() {

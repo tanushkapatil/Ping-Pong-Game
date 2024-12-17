@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class BallBounce : MonoBehaviour
@@ -23,5 +24,11 @@ public class BallBounce : MonoBehaviour
 
         ballMovement.IncreaseHitCounter() ;
         ballMovement.MoveBall(new Vector2(positionX, positionY)) ;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.name == "Player1" || collision.gameObject.name == "Player2") {
+            Bounce(collision) ;
+        }
     }
 }
